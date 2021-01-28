@@ -1,10 +1,10 @@
-const pup=require('puppeteer');
+const puppeteer=require('puppeteer');
 
 
 function run () {
     
     return new Promise(async(resolve) => {
-            const browser = await pup.launch({headless:false,defaultViewport: null, args:['--start-maximized']});
+            const browser = await puppeteer.launch({headless:false,defaultViewport: null, args:['--start-maximized']});
             const page = await browser.newPage();
             await page.setDefaultNavigationTimeout(0);
             await page.goto("https://prefeitura.pbh.gov.br/saude/licitacao/pregao-eletronico-151-2020", {waitUntil: 'networkidle0'});
@@ -34,7 +34,7 @@ function run () {
                     link.push(x);
                 }
 
-                return ` Publication Date: ${publicationDate} \n Bidding Date: ${biddingDate} \n Object: ${object} \n links: ${link}`;
+                return ` Publication Date: ${publicationDate} \n Bidding Date: ${biddingDate} \n Object: ${object} \n link: ${link}`;
 
             })
             
